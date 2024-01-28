@@ -10,13 +10,3 @@
     float:left;
     width:33.3333333333%;
 }
-
-.box{
-    background-color: white;
-    border:1px solid #bdbdbd;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    -moz-box-shadow: 0 0 10px #bdbdbd;
-    -webkit-box-shadow: 0 0 10px #bdbdbd;
-    box-shadow: 0 0 10px #bdbdbd;
-}

@@ -8,14 +8,12 @@
                 <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">TO DO</h5>
-<!--                        <small>3 days ago</small>-->
                     </div>
                 </a>
                 {% for item in todo %}
                 <a type="button" data-bs-toggle="modal" data-bs-target="#progressModal{{ item.id }}" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">{{ item.name }}</h5>
-<!--                        <small class="text-muted">3 days ago</small>-->
                     </div>
                     <p class="mb-1">{{ item.summary }}</p>
                 </a>
@@ -46,14 +44,12 @@
                 <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">In Progress</h5>
-<!--                            <small>3 days ago</small>-->
                     </div>
                 </a>
                 {% for item in inprogress %}
                 <a type="button" data-bs-toggle="modal" data-bs-target="#inprogressModal{{ item.id }}" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">{{ item.name }}</h5>
-<!--                        <small class="text-muted">3 days ago</small>-->
                     </div>
                     <p class="mb-1">{{ item.summary }}</p>
                 </a>
@@ -85,14 +81,12 @@
                 <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">Done</h5>
-<!--                        <small>3 days ago</small>-->
                     </div>
                 </a>
                 {% for item in done %}
                 <a type="button" data-bs-toggle="modal" data-bs-target="#doneModal{{ item.id }}" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">{{ item.name }}</h5>
-<!--                        <small class="text-muted">3 days ago</small>-->
                     </div>
                     <p class="mb-1">{{ item.summary }}</p>
                 </a>
@@ -138,6 +132,8 @@
     </div>
   </div>
 </div>
+
+
 
 
 
