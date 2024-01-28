@@ -1,0 +1,144 @@
+{% include "header.html" %}
+
+
+<div id="serviceBox">
+    <div class="serviceBox1">
+        <div class="box">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">TO DO</h5>
+<!--                        <small>3 days ago</small>-->
+                    </div>
+                </a>
+                {% for item in todo %}
+                <a type="button" data-bs-toggle="modal" data-bs-target="#progressModal{{ item.id }}" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ item.name }}</h5>
+<!--                        <small class="text-muted">3 days ago</small>-->
+                    </div>
+                    <p class="mb-1">{{ item.summary }}</p>
+                </a>
+                    <div class="modal fade" id="progressModal{{ item.id }}" tabindex="-1" aria-labelledby="progressModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="progressModalLabel">{{ item.name }}</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    {{ item.description }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a type="button" class="btn btn-primary" href="{{url_for('updatestatus', taskid=item.id, newstatus='inprogress')}}">Move to In Progress</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="serviceBox2">
+        <div class="box">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">In Progress</h5>
+<!--                            <small>3 days ago</small>-->
+                    </div>
+                </a>
+                {% for item in inprogress %}
+                <a type="button" data-bs-toggle="modal" data-bs-target="#inprogressModal{{ item.id }}" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ item.name }}</h5>
+<!--                        <small class="text-muted">3 days ago</small>-->
+                    </div>
+                    <p class="mb-1">{{ item.summary }}</p>
+                </a>
+                    <div class="modal fade" id="inprogressModal{{ item.id }}" tabindex="-1" aria-labelledby="inprogressModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="inprogressModalLabel">{{ item.name }}</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    {{ item.description }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a type="button" class="btn btn-primary" href="{{url_for('updatestatus', taskid=item.id, newstatus='done')}}">Move to Done</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="serviceBox3">
+        <div class="box">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Done</h5>
+<!--                        <small>3 days ago</small>-->
+                    </div>
+                </a>
+                {% for item in done %}
+                <a type="button" data-bs-toggle="modal" data-bs-target="#doneModal{{ item.id }}" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ item.name }}</h5>
+<!--                        <small class="text-muted">3 days ago</small>-->
+                    </div>
+                    <p class="mb-1">{{ item.summary }}</p>
+                </a>
+                    <div class="modal fade" id="doneModal{{ item.id }}" tabindex="-1" aria-labelledby="doneModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="doneModalLabel">{{ item.name }}</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    {{ item.description }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a type="button" class="btn btn-primary" href="{{url_for('updatestatus', taskid=item.id, newstatus='inprogress')}}">Move back to inprogress</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {% from 'bootstrap5/form.html' import render_form %}
+        {{ render_form(form) }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% include "footer.html" %}
