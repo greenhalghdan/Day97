@@ -28,7 +28,8 @@ class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=False, nullable=False)
     password = db.Column(db.String, unique=False, nullable=False)
-    name = db.Column(db.String, unique=False, nullable=False)
+    FirstName = db.Column(db.String, unique=False, nullable=True)
+    LastName = db.Column(db.String, unique=False, nullable=True)
     status = db.Column(db.String, unique=False, nullable=False)
 
 
@@ -42,6 +43,14 @@ class AddTask(FlaskForm):
 class Login(FlaskForm):
     username = StringField("User name", validators=[DataRequired()])
     password = StringField("Password", validators=[DataRequired()])
+    submit = SubmitField("Login")
+
+
+class NewUser(FlaskForm):
+    username = StringField("User name", validators=[DataRequired()])
+    password = StringField("Password", validators=[DataRequired()])
+    firstname = StringField("First Name")
+    lastname = StringField("Last Name")
     submit = SubmitField("Login")
 
 
